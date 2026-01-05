@@ -1,26 +1,38 @@
-// header-footer.js - Updated to use clean links from blog.json (no .html)
+// header-footer.js - Final version: Mobile menu + Blog functionality (clean URLs)
 
 document.addEventListener('DOMContentLoaded', () => {
+    // === Mobile Menu Toggle (runs on ALL pages) ===
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Optional: prevent body scroll when menu open on mobile
+            document.body.classList.toggle('no-scroll', navMenu.classList.contains('active'));
+        });
+    }
+
+    // === Blog Functionality (only runs on pages with blog section) ===
     const blogPostsContainer = document.getElementById('blog-posts');
     const paginationContainer = document.getElementById('pagination');
     const categoryLinks = document.querySelectorAll('.sidebar a');
-    const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav-menu');
+
+    // If these elements don't exist (e.g., on 404 or single post page), skip blog logic
+    if (!blogPostsContainer || !paginationContainer) {
+        return;
+    }
+
     let allBlogs = [];
     let filteredBlogs = [];
     let currentPage = 1;
     const blogsPerPage = 8;
 
-    // Mobile menu toggle
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-    });
-
-    // Fetch blog data
+    // Fetch blog.json
     fetch('blog.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error('blog.json not found');
+                throw new Error('blog.json not found or failed to load');
             }
             return response.json();
         })
@@ -32,8 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setupCategoryFilters();
         })
         .catch(error => {
-            blogPostsContainer.innerHTML = `<p style="color:red;text-align:center;">Error loading posts: ${error.message}</p>`;
-            console.error('Error loading blogs:', error);
+            blogPostsContainer.innerHTML = 
+                `<p style="color:#ff4444; text-align:center; font-size:1.4em; padding:40px;">
+                    Error loading posts: ${error.message}
+                </p>`;
+            console.error('Blog loading error:', error);
         });
 
     function renderBlogs() {
@@ -43,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const blogsToShow = filteredBlogs.slice(start, end);
 
         if (blogsToShow.length === 0) {
-            blogPostsContainer.innerHTML = '<p style="text-align:center;font-size:1.5em;color:#bbb;">No posts found in this category.</p>';
+            blogPostsContainer.innerHTML = 
+                '<p style="text-align:center; font-size:1.6em; color:#bbb; padding:40px;">No posts found in this category.</p>';
             return;
         }
 
@@ -66,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         paginationContainer.innerHTML = '';
         const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
 
-        if (totalPages <= 1) return; // Hide pagination if only one page
+        if (totalPages <= 1) return; // Hide if only one page
 
         // Prev button
         const prevButton = createButton('Prev', () => {
@@ -78,6 +94,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, currentPage === 1);
 
+        paginationContainer.appendChild(prevButton);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = createButton(i, () => {
+                currentPage = i;
+                renderBlogs();
+                setupPagination();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            if (i === currentPage) {
+                pageButton.style.backgroundColor = '#00bfff';
+                pageButton.style.color = '#121212';
+                pageButton.style.fontWeight = 'bold';
+            }
+            paginationContainer.appendChild(pageButton);
+        }
+
         // Next button
         const nextButton = createButton('Next', () => {
             if (currentPage < totalPages) {
@@ -88,27 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, currentPage === totalPages);
 
-        paginationContainer.appendChild(prevButton);
-
-        // Page number buttons
-        for (let i = 1; i <= totalPages; i++) {
-            const pageButton = createButton(i, () => {
-                currentPage = i;
-                renderBlogs();
-                setupPagination();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, false);
-            if (i === currentPage) {
-                pageButton.style.backgroundColor = '#00bfff';
-                pageButton.style.color = '#121212';
-            }
-            paginationContainer.appendChild(pageButton);
-        }
-
         paginationContainer.appendChild(nextButton);
     }
 
-    function createButton(text, onClick, disabled) {
+    function createButton(text, onClick, disabled = false) {
         const button = document.createElement('button');
         button.textContent = text;
         button.disabled = disabled;
@@ -117,16 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupCategoryFilters() {
+        if (categoryLinks.length === 0) return;
+
         categoryLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const category = link.dataset.category;
-                filteredBlogs = category === 'all' 
-                    ? allBlogs 
-                    : allBlogs.filter(blog => blog.category.toLowerCase() === category);
+
+                if (category === 'all') {
+                    filteredBlogs = allBlogs;
+                } else {
+                    filteredBlogs = allBlogs.filter(blog => 
+                        blog.category.toLowerCase() === category.toLowerCase()
+                    );
+                }
+
                 currentPage = 1;
                 renderBlogs();
                 setupPagination();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
     }
