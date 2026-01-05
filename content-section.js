@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname; // e.g., "/post/rudys-adventures-in-chalkzone"
 
     // Fetch blog data
-    fetch('/blog.json')
+    fetch('blog.json')
         .then(response => {
             if (!response.ok) throw new Error('blog.json not found');
             return response.json();
