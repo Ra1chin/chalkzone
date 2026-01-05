@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "title": "Rudys Adventures in Chalkzone",
+        "content": "Explore how Rudy discovers the magical world of Chalkzone and his first drawings coming to life.",
+        "category": "Characters",
+        "date": "2026-01-01",
+        "image": "/images/Rudy's Adventures in Chalkzone.webp",
+        "link": "/characters/rudys-adventures-in-chalkzone"
+    },
+    {
+        "id": 2,
+        "title": "Snap: The Blue Chalk Friend",
+        "content": "All about Snap, Rudy's chalk creation and best friend in the zone.",
+        "category": "Characters",
+        "date": "2026-01-02",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Snap+Friend",
+        "link": "/post/snap-the-blue-chalk-friend"
+    },
+    {
+        "id": 3,
+        "title": "Top Trending Episodes This Week",
+        "content": "A look at the most popular Chalkzone episodes trending on social media.",
+        "category": "Trending",
+        "date": "2026-01-03",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Trending+Episodes",
+        "link": "/post/top-trending-episodes-this-week"
+    },
+    {
+        "id": 4,
+        "title": "Cartoon Crossovers: Chalkzone Meets Others",
+        "content": "Imagining fun crossovers with other classic cartoons.",
+        "category": "Cartoons",
+        "date": "2026-01-04",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Cartoon+Crossovers",
+        "link": "/post/cartoon-crossovers-chalkzone-meets-others"
+    },
+    {
+        "id": 5,
+        "title": "Penny Sanchez: The Smart Sidekick",
+        "content": "Diving into Penny's role and her inventions in the series.",
+        "category": "Characters",
+        "date": "2026-01-05",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Penny+Sanchez",
+        "link": "/post/penny-sanchez-the-smart-sidekick"
+    },
+    {
+        "id": 6,
+        "title": "Why Chalkzone is Trending Again",
+        "content": "Reasons behind the resurgence of this classic show.",
+        "category": "Trending",
+        "date": "2026-01-06",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Trending+Again",
+        "link": "/post/why-chalkzone-is-trending-again"
+    },
+    {
+        "id": 7,
+        "title": "Best Cartoon Villains in Chalkzone",
+        "content": "Highlighting the antagonists that make the show exciting.",
+        "category": "Cartoons",
+        "date": "2026-01-07",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Cartoon+Villains",
+        "link": "/post/best-cartoon-villains-in-chalkzone"
+    },
+    {
+        "id": 8,
+        "title": "Blocky: The Bully Turned Ally?",
+        "content": "Analyzing Blocky's character arc.",
+        "category": "Characters",
+        "date": "2026-01-08",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Blocky+Ally",
+        "link": "/post/blocky-the-bully-turned-ally"
+    },
+    {
+        "id": 9,
+        "title": "Trending Fan Art from Chalkzone",
+        "content": "Showcasing the latest fan creations.",
+        "category": "Trending",
+        "date": "2026-01-09",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Fan+Art",
+        "link": "/post/trending-fan-art-from-chalkzone"
+    },
+    {
+        "id": 10,
+        "title": "Evolution of Cartoon Animation in Chalkzone",
+        "content": "How the show's style evolved over seasons.",
+        "category": "Cartoons",
+        "date": "2026-01-10",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Animation+Evolution",
+        "link": "/post/evolution-of-cartoon-animation-in-chalkzone"
+    },
+    {
+        "id": 11,
+        "title": "Queen Rapsheeba: The Rap Star",
+        "content": "All about this musical character.",
+        "category": "Characters",
+        "date": "2026-01-11",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Queen+Rapsheeba",
+        "link": "/post/queen-rapsheeba-the-rap-star"
+    },
+    {
+        "id": 12,
+        "title": "Chalkzone Memes Trending Now",
+        "content": "Funny memes from the community.",
+        "category": "Trending",
+        "date": "2026-01-12",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Memes+Trending",
+        "link": "/post/chalkzone-memes-trending-now"
+    },
+    {
+        "id": 13,
+        "title": "Comparing Chalkzone to Other Nicktoons",
+        "content": "Similarities and differences with SpongeBob and more.",
+        "category": "Cartoons",
+        "date": "2026-01-13",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Nicktoons+Comparison",
+        "link": "/post/comparing-chalkzone-to-other-nicktoons"
+    },
+    {
+        "id": 14,
+        "title": "Skrawl: The Ultimate Villain",
+        "content": "Deep dive into Skrawl's backstory.",
+        "category": "Characters",
+        "date": "2026-01-14",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Skrawl+Villain",
+        "link": "/post/skrawl-the-ultimate-villain"
+    },
+    {
+        "id": 15,
+        "title": "What's Trending in Chalkzone Fandom",
+        "content": "Latest news and updates from fans.",
+        "category": "Trending",
+        "date": "2026-01-15",
+        "image": "https://via.placeholder.com/300x200/1e1e1e/ffffff?text=Fandom+Trending",
+        "link": "/post/whats-trending-in-chalkzone-fandom"
+    }
+]
