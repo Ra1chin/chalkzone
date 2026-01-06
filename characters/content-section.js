@@ -1,7 +1,7 @@
-// content.js - Dynamic single post loader for clean URLs (no .html)
+// content.js - Dynamic single post loader for clean URLs
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle (shared with all pages)
+    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
@@ -18,32 +18,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const dateElement = document.getElementById('post-date');
     const categoryElement = document.getElementById('post-category');
 
-    // Check if we're on a content page
+    // If not on a post page, exit early
     if (!titleElement || !contentElement) {
-        return; // Not a post page
+        return;
     }
 
-    // Get current clean URL path
-    const currentPath = window.location.pathname; // e.g., "/post/rudys-adventures-in-chalkzone"
+    // Get clean path: e.g., "/post/rudys-adventures-in-chalkzone"
+    const currentPath = window.location.pathname.toLowerCase();
 
     // Fetch blog data
     fetch('/blog.json')
         .then(response => {
-            if (!response.ok) throw new Error('blog.json not found');
+            if (!response.ok) throw new Error('blog.json not found or failed to load');
             return response.json();
         })
         .then(posts => {
-            // Find the post that matches the current URL
-            const currentPost = posts.find(post => post.link === currentPath);
+            // Find matching post (case-insensitive just in case)
+            const currentPost = posts.find(post => 
+                post.link.toLowerCase() === currentPath
+            );
 
             if (!currentPost) {
-                // Post not found
+                // 404 Stylish Not Found
                 document.body.innerHTML = `
-                    <div style="text-align:center; padding:80px 20px; font-family:'Bangers', cursive;">
-                        <h1 style="font-size:4em; color:#00bfff;">404</h1>
-                        <h2 style="font-size:2.5em; color:#fff;">Post Not Found</h2>
-                        <p style="font-size:1.4em; color:#bbb;">The chalk must have been erased...</p>
-                        <a href="/" style="display:inline-block; margin-top:30px; padding:15px 30px; background:#00bfff; color:#121212; border-radius:50px; text-decoration:none; font-size:1.3em;">
+                    <div style="text-align:center; padding:100px 20px; font-family:'Bangers', cursive; background:#121212; min-height:100vh;">
+                        <h1 style="font-size:5em; color:#00bfff; margin:0;">404</h1>
+                        <h2 style="font-size:2.8em; color:#fff; margin:20px 0;">Post Not Found</h2>
+                        <p style="font-size:1.6em; color:#bbb;">The chalk drawing must have been erased... 🖍️💨</p>
+                        <a href="/" style="display:inline-block; margin-top:40px; padding:15px 40px; background:#00bfff; color:#121212; border-radius:50px; text-decoration:none; font-size:1.5em; font-weight:bold;">
                             ← Back to Home
                         </a>
                     </div>
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Populate the page with post data
+            // Populate post data
             document.title = `${currentPost.title} | ChalkZone Blog`;
 
             titleElement.textContent = currentPost.title;
@@ -61,22 +63,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (imageElement && currentPost.image) {
                 imageElement.src = currentPost.image;
                 imageElement.alt = currentPost.title;
+                imageElement.style.display = 'block';
             }
 
-            // Use full content from a future "fullContent" field, or fallback to short
-            // For now, we'll display a placeholder full article (you can expand later)
+            // Full content placeholder (palitan mo 'to pag may full article na)
             contentElement.innerHTML = `
-                <p><strong>Coming Soon:</strong> Full in-depth article about <em>${currentPost.title}</em>.</p>
-                <p>Teaser: ${currentPost.content}</p>
-                <p>Stay tuned as we draw more magic from ChalkZone! 🖍️✨</p>
+                <article style="font-size:1.1em; line-height:1.8;">
+                    <p><strong>Coming Soon:</strong> Full detailed article about <em>${currentPost.title}</em>! 🖍️✨</p>
+                    <p><strong>Teaser:</strong> ${currentPost.content}</p>
+                    <p>Stay tuned for more magical ChalkZone adventures!</p>
+                </article>
             `;
         })
         .catch(error => {
             contentElement.innerHTML = `
-                <p style="color:#ff4444; text-align:center;">
-                    Error loading post: ${error.message}
+                <p style="color:#ff4444; text-align:center; padding:40px; background:#330000; border-radius:12px;">
+                    ⚠️ Error loading post: ${error.message}
                 </p>
             `;
-            console.error(error);
+            console.error('Post loading error:', error);
         });
 });
