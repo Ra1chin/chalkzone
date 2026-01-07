@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${blog.image}" alt="${blog.title}" class="blog-image">
                 <h3>${blog.title}</h3>
                 <p>${blog.content.substring(0, 150)}...</p>
-                <a href="${blog.link}" class="read-more">Read More</a>
+                <a href="${blog.link}" class="read-more">Read full Content</a>
                 <span class="category">Category: ${blog.category}</span>
                 <p><small>${blog.date}</small></p>
             `;
