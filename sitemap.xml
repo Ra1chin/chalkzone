@@ -22,6 +22,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://chalkzone.vercel.app/cartoons</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Individual Blog Posts -->
   <url>
     <loc>https://chalkzone.vercel.app/characters/rudys-adventures-in-chalkzone.html</loc>
