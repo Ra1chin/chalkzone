@@ -25,7 +25,17 @@
         "date": "January 7, 2026",
         "image": "/images/rickandmorty.webp",
         "link": "cartoons/rick-and-morty.html"
+    },
+    {
+        "id": 4,
+        "title": "Lakers vs Pelicans: Epic Clashes in the NBA",
+        "content": "Explore the exciting Lakers vs Pelicans NBA rivalry: historic clashes to recent thrillers with LeBron, Luka, Zion & stars.",
+        "category": "Cartoons",
+        "date": "January 10, 2026",
+        "image": "/images/rickandmorty.webp",
+        "link": "cartoons/rick-and-morty.html"
     }
+
     
     
 ]
